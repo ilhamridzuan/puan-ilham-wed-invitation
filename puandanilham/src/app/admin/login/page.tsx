@@ -57,7 +57,7 @@ export default function AdminLoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="bg-gray-900 text-white rounded-lg py-2 text-sm font-medium hover:bg-gray-700 disabled:opacity-50 transition-colors"
+              className="bg-gray-900/60 backdrop-blur-md border border-gray-700 text-white rounded-lg py-2 text-sm font-medium hover:bg-gray-900/80 disabled:opacity-50 transition-colors shadow-sm"
             >
               {loading ? 'Menghantar...' : 'Hantar Magic Link'}
             </button>

@@ -25,12 +25,12 @@ export default function InvitationSection() {
         initial={{ opacity: 0, y: 32 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-80px" }}
-        transition={{ duration: 0.9, ease: "easeOut" }}
+        transition={{ duration: 2.0, ease: [0.22, 1, 0.36, 1] }}
         /* Dibesarkan dengan menggunakan w-[115%] supaya sedikit bleed dan flex-none */
         className="relative z-10 w-[115%] max-w-[460px] flex-none"
       >
         <Image
-          src="/assets/Kalimat Jemputan Revisi (2).svg"
+          src="/assets/Kalimat Jemputan (gelar lengkap).svg"
           alt="Kalimat Jemputan — Pesan Undangan Pernikahan Puan & Ilham"
           width={460}
           height={680}

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import CoverPage from "@/components/CoverPage";
 import MainPage from "@/components/MainPage";
+import MusicPlayer from "@/components/MusicPlayer";
 
 export default function Home() {
   const [isCoverOpen, setIsCoverOpen] = useState(false);
@@ -23,6 +24,8 @@ export default function Home() {
       >
         <MainPage />
       </div>
+
+      <MusicPlayer isPlayingProp={true} forcePlayTrigger={isCoverOpen} />
     </>
   );
 }

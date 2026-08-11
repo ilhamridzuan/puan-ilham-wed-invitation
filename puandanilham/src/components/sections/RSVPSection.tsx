@@ -13,11 +13,16 @@ type FormState =
 const MAX_GUESTS = 10;
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 32 },
+  hidden: { opacity: 0, y: 40, scale: 0.96 },
   visible: (delay = 0) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.8, delay, ease: "easeOut" },
+    scale: 1,
+    transition: { 
+      duration: 2.0, 
+      delay, 
+      ease: [0.22, 1, 0.36, 1] as const,
+    },
   }),
 };
 

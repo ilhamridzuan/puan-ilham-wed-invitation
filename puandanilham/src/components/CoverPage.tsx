@@ -95,7 +95,7 @@ export default function CoverPage({ onOpen }: { onOpen: () => void }) {
           className="absolute top-[14%] left-1/2 w-[83%] max-w-[342px] flex justify-center z-20"
         >
           <div 
-            className="w-full aspect-[342/80] bg-[#E63E88]"
+            className="w-full aspect-[342/80] bg-[#384D95]"
             style={{
               maskImage: 'url("/assets/Title Onboarding.svg")',
               maskSize: 'contain',
