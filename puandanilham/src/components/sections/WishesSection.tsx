@@ -7,11 +7,16 @@ import type { Wish } from "@/lib/types";
 import { motion, AnimatePresence } from "framer-motion";
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 32 },
-  visible: (delay: number = 0) => ({
+  hidden: { opacity: 0, y: 40, scale: 0.96 },
+  visible: (delay = 0) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.8, delay, ease: "easeOut" as const },
+    scale: 1,
+    transition: { 
+      duration: 2.0, 
+      delay, 
+      ease: [0.22, 1, 0.36, 1] as const,
+    },
   }),
 };
 
@@ -103,7 +108,7 @@ export default function WishesSection() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.4, delay: Math.min(i * 0.1, 0.5), ease: "easeOut" }}
+              transition={{ duration: 2.0, delay: Math.min(i * 0.1, 0.5), ease: [0.22, 1, 0.36, 1] }}
               className="relative flex w-full flex-col items-center overflow-hidden rounded-2xl border border-white/30 bg-white/20 p-3 shadow-sm backdrop-blur-sm"
             >
               {/* Background Pattern */}

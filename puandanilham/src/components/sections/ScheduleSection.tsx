@@ -10,7 +10,7 @@ export default function ScheduleSection() {
         initial={{ opacity: 0, y: 32 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-80px" }}
-        transition={{ duration: 0.9, ease: "easeOut" }}
+        transition={{ duration: 2.0, ease: [0.22, 1, 0.36, 1] }}
         className="flex w-full max-w-[380px] flex-col items-center justify-center rounded-2xl border border-white/30 bg-white/20 p-8 shadow-sm backdrop-blur-sm"
       >
         {/* Title */}

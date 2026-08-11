@@ -116,7 +116,7 @@ export default function FloatingNav() {
           >
             <button
               onClick={scrollToTop}
-              className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-[#384D95] shadow-lg border border-gray-100 transition-transform active:scale-95 hover:bg-gray-50"
+              className="flex h-12 w-12 items-center justify-center rounded-full bg-white/40 backdrop-blur-md text-[#384D95] shadow-lg border border-white/50 transition-transform active:scale-95 hover:bg-white/50"
               aria-label="Kembali ke atas"
             >
               <ArrowUpIcon />
@@ -137,7 +137,7 @@ export default function FloatingNav() {
             {/* Burger Menu Toggle */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="flex h-14 w-14 items-center justify-center rounded-full bg-white text-[#384D95] shadow-xl border border-gray-100 transition-transform active:scale-95 hover:bg-gray-50"
+              className="flex h-14 w-14 items-center justify-center rounded-full bg-white/40 backdrop-blur-md text-[#384D95] shadow-xl border border-white/50 transition-transform active:scale-95 hover:bg-white/50"
               aria-label="Menu navigasi"
             >
               {isOpen ? <CloseIcon /> : <MenuIcon />}
@@ -158,10 +158,10 @@ export default function FloatingNav() {
                       onClick={item.onClick}
                       className="flex items-center gap-3 pr-1"
                     >
-                      <span className="bg-white/95 backdrop-blur-sm px-4 py-1.5 rounded-xl text-sm text-[#0E155E] font-medium shadow-md">
+                      <span className="bg-white/40 backdrop-blur-md border border-white/50 px-4 py-1.5 rounded-xl text-sm text-[#0E155E] font-medium shadow-md">
                         {item.label}
                       </span>
-                      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-[#384D95] shadow-lg border border-blue-100 transition-transform active:scale-95">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/40 backdrop-blur-md text-[#384D95] shadow-lg border border-white/50 transition-transform active:scale-95">
                         {item.icon}
                       </div>
                     </button>

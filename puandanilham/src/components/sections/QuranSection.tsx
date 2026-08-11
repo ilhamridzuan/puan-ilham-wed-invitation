@@ -13,7 +13,7 @@ export default function QuranSection() {
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-80px" }}
-        transition={{ duration: 1, ease: "easeOut" }}
+        transition={{ duration: 2.0, ease: [0.22, 1, 0.36, 1] }}
         /* 
          * Robust flex centering for bleeding elements: 
          * flex-none prevents squishing, w-[136%] scales on mobile, 
