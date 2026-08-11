@@ -9,8 +9,8 @@ const pinyonScript = Pinyon_Script({
 });
 
 export const metadata: Metadata = {
-  title: "Undangan Pernikahan | Puan & Ilham",
-  description: "Undangan digital pernikahan Puan & Ilham",
+  title: "Jemputan Majelis Perkahwinan | Puan & Ilham",
+  description: "Jemputan majelis perkahwinan Puan & Ilham",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
