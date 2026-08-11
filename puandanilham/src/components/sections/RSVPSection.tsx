@@ -1,14 +1,9 @@
 "use client";
 
-import { useState, useTransition } from "react";
-import { createClient } from "@/lib/supabase/client";
+import { useState, useActionState, useEffect } from "react";
 import type { Attendance } from "@/lib/types";
 import { motion } from "framer-motion";
-
-type FormState =
-  | { status: "idle" }
-  | { status: "success" }
-  | { status: "error"; message: string };
+import { submitRSVP } from "@/lib/actions";
 
 const MAX_GUESTS = 10;
 
@@ -27,62 +22,21 @@ const fadeUp = {
 };
 
 export default function RSVPSection() {
-  const [formState, setFormState] = useState<FormState>({ status: "idle" });
-  const [isPending, startTransition] = useTransition();
+  const [formState, formAction, isPending] = useActionState(submitRSVP, { status: "idle", message: "" });
 
   const [name, setName] = useState("");
   const [attendance, setAttendance] = useState<Attendance>("hadir");
   const [guestCount, setGuestCount] = useState<number>(1);
   const [message, setMessage] = useState("");
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    if (!name.trim()) {
-      setFormState({ status: "error", message: "Sila masukkan nama anda." });
-      return;
-    }
-    if (attendance === "hadir" && (guestCount < 1 || guestCount > MAX_GUESTS)) {
-      setFormState({
-        status: "error",
-        message: `Jumlah tetamu mestilah antara 1 dan ${MAX_GUESTS}.`,
-      });
-      return;
-    }
-
-    startTransition(async () => {
-      const supabase = createClient();
-      
-      // Submit RSVP
-      const { error: rsvpError } = await supabase.from("rsvps").insert({
-        name: name.trim(),
-        attendance,
-        guest_count: attendance === "hadir" ? guestCount : 0,
-      });
-
-      if (rsvpError) {
-        setFormState({
-          status: "error",
-          message: "Ralat berlaku semasa menghantar RSVP. Sila cuba lagi.",
-        });
-        return;
-      }
-
-      // Submit Wish if provided
-      if (message.trim()) {
-        await supabase.from("wishes").insert({
-          name: name.trim(),
-          message: message.trim(),
-        });
-      }
-
-      setFormState({ status: "success" });
+  useEffect(() => {
+    if (formState.status === "success") {
       setName("");
       setAttendance("hadir");
       setGuestCount(1);
       setMessage("");
-    });
-  };
+    }
+  }, [formState.status]);
 
   return (
     <section
@@ -100,7 +54,7 @@ export default function RSVPSection() {
         className="flex w-full max-w-[380px] flex-col items-center justify-center rounded-2xl border border-white/30 bg-white/20 p-6 text-center shadow-sm backdrop-blur-sm"
       >
         <p className="font-serif text-[17px] italic leading-relaxed text-primary">
-          Menjadi sebuah kebahagiaan bagi kami apabila Tuan / Puan / Encik / Cik berkenan hadir dalam hari bahagia kami.
+          Merupakan suatu kebahagiaan bagi kami apabila Bapak / Ibu / Saudara / Saudari berkenan hadir pada hari bahagia kami.
         </p>
       </motion.div>
 
@@ -117,7 +71,7 @@ export default function RSVPSection() {
           Konfirmasi Kehadiran
         </h2>
         <p className="mt-3 mb-8 max-w-[280px] text-center font-serif text-[13px] italic leading-relaxed text-primary">
-          Kami sangat berterimakasih jika anda memberikan konfirmasi kehadiran sebelum 2 September 2026
+          Kami sangat berterima kasih jika Anda dapat memberikan konfirmasi kehadiran sebelum 2 September 2026
         </p>
 
         {formState.status === "success" ? (
@@ -130,12 +84,12 @@ export default function RSVPSection() {
               Terima Kasih!
             </p>
             <p className="mt-3 font-serif text-sm text-primary">
-              Kehadiran dan ucapan anda telah direkodkan. Kami amat menantikan kehadiran anda!
+              Kehadiran dan ucapan Anda telah dicatat. Kami sangat menantikan kehadiran Anda!
             </p>
           </motion.div>
         ) : (
           <form
-            onSubmit={handleSubmit}
+            action={formAction}
             noValidate
             className="flex w-full flex-col gap-4"
           >
@@ -146,6 +100,7 @@ export default function RSVPSection() {
               </label>
               <input
                 id="rsvp-name"
+                name="name"
                 type="text"
                 required
                 value={name}
@@ -163,6 +118,7 @@ export default function RSVPSection() {
               <div className="relative">
                 <select
                   id="rsvp-attendance"
+                  name="attendance"
                   value={attendance}
                   onChange={(e) => setAttendance(e.target.value as Attendance)}
                   className="w-full appearance-none rounded-xl border border-primary/20 bg-white py-3 pl-4 pr-10 font-serif text-[15px] text-gray-800 outline-none transition-all focus:border-primary focus:ring-1 focus:ring-primary"
@@ -187,6 +143,7 @@ export default function RSVPSection() {
                 <div className="relative">
                   <select
                     id="rsvp-guest-count"
+                    name="guestCount"
                     value={guestCount}
                     onChange={(e) => setGuestCount(Number(e.target.value))}
                     className="w-full appearance-none rounded-xl border border-primary/20 bg-white py-3 pl-4 pr-10 font-serif text-[15px] text-gray-800 outline-none transition-all focus:border-primary focus:ring-1 focus:ring-primary"
@@ -209,6 +166,7 @@ export default function RSVPSection() {
             {/* Ucapan / Doa */}
             <div className="mt-2 flex flex-col gap-1.5">
               <textarea
+                name="message"
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 placeholder="Tinggalkan sepatah dua kata ucapan & doa untuk kami..."
@@ -218,7 +176,7 @@ export default function RSVPSection() {
             </div>
 
             {/* Error message */}
-            {formState.status === "error" && (
+            {formState?.status === "error" && (
               <p role="alert" className="font-serif text-sm text-red-500">
                 {formState.message}
               </p>

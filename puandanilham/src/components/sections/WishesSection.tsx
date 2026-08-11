@@ -99,7 +99,7 @@ export default function WishesSection() {
       <div
         className="flex w-full max-w-[380px] flex-col gap-6"
         aria-live="polite"
-        aria-label="Senarai ucapan tamu"
+        aria-label="Daftar ucapan tamu"
       >
         <AnimatePresence initial={false}>
           {wishes.map((wish, i) => (
