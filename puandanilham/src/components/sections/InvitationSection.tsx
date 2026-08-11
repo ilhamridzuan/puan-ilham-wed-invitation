@@ -30,7 +30,7 @@ export default function InvitationSection() {
         className="relative z-10 w-[115%] max-w-[460px] flex-none"
       >
         <Image
-          src="/assets/Kalimat Jemputan (gelar lengkap).svg"
+          src="/assets/Kalimat Jemputan Fix.svg"
           alt="Kalimat Jemputan — Pesan Undangan Pernikahan Puan & Ilham"
           width={460}
           height={680}

@@ -18,7 +18,7 @@ const fadeUp = {
 };
 
 export default function DateLocationSection() {
-  const googleMapsUrl = "#";
+  const googleMapsUrl = "https://maps.app.goo.gl/wWX8iS3PMZmRUa8u8?g_st=iw";
 
   return (
     <section
