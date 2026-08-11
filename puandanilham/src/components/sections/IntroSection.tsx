@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 32 },
-  visible: (delay = 0) => ({
+  visible: (delay: number = 0) => ({
     opacity: 1,
     y: 0,
     transition: { duration: 0.8, delay, ease: "easeOut" as const },

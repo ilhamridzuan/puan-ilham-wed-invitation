@@ -8,7 +8,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 32 },
-  visible: (delay = 0) => ({
+  visible: (delay: number = 0) => ({
     opacity: 1,
     y: 0,
     transition: { duration: 0.8, delay, ease: "easeOut" as const },
@@ -94,7 +94,7 @@ export default function WishesSection() {
       <div
         className="flex w-full max-w-[380px] flex-col gap-6"
         aria-live="polite"
-        aria-label="Senarai ucapan tamu"
+        aria-label="Daftar ucapan tamu"
       >
         <AnimatePresence initial={false}>
           {wishes.map((wish, i) => (
