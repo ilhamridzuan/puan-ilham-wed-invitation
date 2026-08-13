@@ -103,7 +103,7 @@ export default function PilihBingkaiPage() {
       </div>
 
       {/* Main Container - Giant Glass Card */}
-      <div className="relative z-10 w-[92%] h-[94%] max-w-md flex flex-col bg-white/40 backdrop-blur-md rounded-[24px] border border-white/60 shadow-xl p-5 overflow-hidden">
+      <div className="relative z-10 w-[92%] h-[94%] max-w-md flex flex-col bg-white/20 backdrop-blur-sm rounded-[24px] border border-white/30 shadow-sm p-5 overflow-hidden">
         
         {/* Top section: Back button */}
         <div className="flex w-full justify-start shrink-0">
