@@ -70,15 +70,34 @@ export default function IntroSection() {
         </motion.div>
 
         {/* Date */}
-        <motion.p
+        <motion.div
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           custom={0.3}
-          className="mt-6 font-serif text-[32px] italic text-primary"
+          className="mt-2 w-full max-w-[240px]"
         >
-          04 . 09 . 2026
+          <Image
+            src="/assets/Date&Time.svg"
+            alt="04 . 09 . 2026"
+            width={240}
+            height={154}
+            className="h-auto w-full"
+          />
+        </motion.div>
+
+        {/* Location */}
+        <motion.p
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          custom={0.4}
+          className="mt-4 max-w-[280px] text-center text-[18px] italic text-primary"
+          style={{ fontFamily: "'Times New Roman', Times, serif" }}
+        >
+          Sam's anna restaurant, Tanjungpinang.
         </motion.p>
       </div>
     </section>
