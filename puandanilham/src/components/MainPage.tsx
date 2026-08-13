@@ -46,7 +46,7 @@ export default function MainPage() {
   return (
     <main
       id="main-content"
-      className="relative flex w-full flex-col items-center"
+      className="relative flex w-full flex-col items-center overflow-x-hidden"
       aria-label="Halaman Utama Undangan Perkahwinan Puan & Ilham"
       style={{ backgroundColor: "#ffffff" }}
     >
