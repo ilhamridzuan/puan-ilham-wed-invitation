@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { motion } from "framer-motion";
 
-export default function CoverPage({ onOpen }: { onOpen: () => void }) {
+export default function PhotoboothCoverPage({ onOpen }: { onOpen: () => void }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleOpen = () => {
@@ -16,8 +16,9 @@ export default function CoverPage({ onOpen }: { onOpen: () => void }) {
 
   return (
     <div
-      className={`fixed inset-0 z-50 flex flex-col items-center justify-between w-full h-full overflow-hidden touch-none bg-white transition-transform duration-700 ease-in-out ${isOpen ? "-translate-y-full opacity-0 pointer-events-none" : "translate-y-0 opacity-100"
-        }`}
+      className={`fixed inset-0 z-50 flex flex-col items-center justify-between w-full h-full overflow-hidden touch-none bg-white transition-transform duration-700 ease-in-out ${
+        isOpen ? "-translate-y-full opacity-0 pointer-events-none" : "translate-y-0 opacity-100"
+      }`}
       onClick={handleOpen}
     >
       {/* Background Image - Full screen */}
@@ -34,7 +35,7 @@ export default function CoverPage({ onOpen }: { onOpen: () => void }) {
       {/* Full-width container for borders to follow screen edges up to a limit */}
       <div className="fixed inset-0 w-full h-[100dvh] max-w-5xl mx-auto pointer-events-none z-10 overflow-hidden">
         {/* Top Border Container */}
-        <motion.div 
+        <motion.div
           initial={{ y: -50, opacity: 0, scaleY: -1 }}
           animate={{ y: 0, opacity: 1, scaleY: -1 }}
           transition={{ duration: 1, ease: "easeOut" }}
@@ -59,7 +60,7 @@ export default function CoverPage({ onOpen }: { onOpen: () => void }) {
         </motion.div>
 
         {/* Bottom Border Container */}
-        <motion.div 
+        <motion.div
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 1, ease: "easeOut" }}
@@ -87,7 +88,6 @@ export default function CoverPage({ onOpen }: { onOpen: () => void }) {
       {/* Main Content Area - Constrained to mobile proportions */}
       <div className="relative z-20 flex flex-col items-center justify-end w-full h-[100dvh] max-w-[412px] mx-auto px-4 pointer-events-none">
         
-        {/* Title */}
         <motion.div 
           initial={{ opacity: 0, scale: 0.9, x: "-50%", y: -20 }}
           animate={{ opacity: 1, scale: 1, x: "-50%", y: 0 }}
@@ -97,16 +97,16 @@ export default function CoverPage({ onOpen }: { onOpen: () => void }) {
           <div 
             className="w-full aspect-[342/80] bg-[#384D95]"
             style={{
-              maskImage: 'url("/assets/Title Onboarding.svg")',
+              maskImage: 'url("/assets/Title Photobooth.svg")',
               maskSize: 'contain',
               maskRepeat: 'no-repeat',
               maskPosition: 'center',
-              WebkitMaskImage: 'url("/assets/Title Onboarding.svg")',
+              WebkitMaskImage: 'url("/assets/Title Photobooth.svg")',
               WebkitMaskSize: 'contain',
               WebkitMaskRepeat: 'no-repeat',
               WebkitMaskPosition: 'center',
             }}
-            aria-label="Jemputan Kasih & Doa Restu"
+            aria-label="Virtual Photobooth"
           />
         </motion.div>
 

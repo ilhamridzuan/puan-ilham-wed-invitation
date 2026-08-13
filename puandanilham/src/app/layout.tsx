@@ -19,7 +19,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="id"
       className={`${pinyonScript.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col font-serif">{children}</body>
+      <body className="min-h-full flex flex-col font-serif">
+        <div className="flex-1 flex flex-col w-full overflow-x-hidden">
+          {children}
+        </div>
+      </body>
     </html>
   );
 }
