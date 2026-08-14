@@ -2,18 +2,46 @@
 
 import { useRouter } from "next/navigation";
 import { usePhotobooth } from "../PhotoboothContext";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
+import { createClient } from "@/lib/supabase/client";
 
 export default function HasilPage() {
   const router = useRouter();
-  const { finalImageUrl, senderName, reset } = usePhotobooth();
+  const { finalImageUrl, senderName, frameId, message, reset } = usePhotobooth();
+  const [isSaving, setIsSaving] = useState(false);
+  const [isSaved, setIsSaved] = useState(false);
 
   useEffect(() => {
     if (!finalImageUrl) {
       router.replace("/kenangan-perkahwinan");
     }
   }, [finalImageUrl, router]);
+
+  const handleSaveToGallery = async () => {
+    if (!finalImageUrl || isSaved) return;
+    setIsSaving(true);
+    
+    try {
+      const supabase = createClient();
+      const { error: dbError } = await supabase
+        .from("photobooth_entries")
+        .insert({
+          sender_name: senderName,
+          message: message,
+          photo_url: finalImageUrl,
+          frame_id: frameId
+        });
+        
+      if (dbError) throw dbError;
+      setIsSaved(true);
+    } catch (err) {
+      console.error("Save to gallery failed:", err);
+      alert("Gagal menyimpan ke galeri. Sila cuba lagi.");
+    } finally {
+      setIsSaving(false);
+    }
+  };
 
   const handleDownload = async () => {
     if (!finalImageUrl) return;
@@ -125,7 +153,7 @@ export default function HasilPage() {
         </div>
 
         {/* Final Photobooth Display */}
-        <div className="flex-1 w-full relative min-h-0 flex flex-col items-center justify-center overflow-hidden mb-4 sm:mb-6">
+        <div className="flex-1 w-full relative min-h-0 flex flex-col items-center justify-center overflow-hidden mb-8 sm:mb-10 mt-2">
           <div className="relative h-full max-h-[50vh] sm:max-h-[55vh] w-auto max-w-full flex items-center justify-center">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={finalImageUrl} alt="Hasil Photobooth" className="w-auto h-full max-w-full max-h-full object-contain drop-shadow-xl" />
@@ -133,15 +161,47 @@ export default function HasilPage() {
         </div>
 
         {/* Action Buttons */}
-        <div className="w-full shrink-0 flex flex-col gap-2 sm:gap-3">
+        <div className="w-full shrink-0 flex flex-col gap-4 sm:gap-5">
+
+          {/* Primary Action */}
+          <div className="flex flex-col items-center gap-1.5 sm:gap-2">
+          <button
+            onClick={handleSaveToGallery}
+            disabled={isSaving || isSaved}
+            className={`flex h-[42px] sm:h-[50px] w-full items-center justify-center gap-2 sm:gap-3 rounded-[12px] transition-colors shadow-md text-white ${isSaved ? 'bg-green-600' : 'bg-primary hover:bg-[#2c3d75]'}`}
+          >
+            {isSaving ? (
+              <svg className="animate-spin h-4 w-4 sm:h-5 sm:w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+            ) : isSaved ? (
+              <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" /></svg>
+            ) : (
+              <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+            )}
+            <span className="font-serif text-[15px] sm:text-[18px] italic font-semibold">
+              {isSaved ? "Telah Ditambah ke Galeri" : "Tampilkan ke galeri kenangan"}
+            </span>
+          </button>
           
+          <p className="text-center text-[10px] sm:text-xs text-gray-700 px-2 leading-tight">
+            Kami sangat berterimakasih jika anda berkenan untuk momen ini ditampilkan ke galeri kenangan.
+          </p>
+          </div>
+
+          <div className="w-full h-[1px] bg-white/30 rounded-full my-0.5"></div>
+
+          {/* Secondary Actions */}
+          <div className="flex flex-col gap-2 sm:gap-3">
+
           <button
             onClick={handleDownload}
-            className="flex h-[42px] sm:h-[50px] w-full items-center justify-center gap-2 sm:gap-3 rounded-[12px] bg-primary hover:bg-[#2c3d75] transition-colors shadow-md text-white"
+            className="flex h-[42px] sm:h-[50px] w-full items-center justify-center gap-2 sm:gap-3 rounded-[12px] bg-white hover:bg-neutral-50 transition-colors shadow-md text-primary"
           >
             <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
             <span className="font-serif text-[15px] sm:text-[18px] italic font-semibold">
-              Unduh Kenangan
+              Unduh Momen
             </span>
           </button>
 
@@ -151,7 +211,7 @@ export default function HasilPage() {
           >
             <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" /></svg>
             <span className="font-serif text-[15px] sm:text-[18px] italic font-semibold">
-              Bagikan Kenangan
+              Bagikan Momen
             </span>
           </button>
 
@@ -177,6 +237,8 @@ export default function HasilPage() {
               Kembali ke Halaman Utama
             </span>
           </button>
+
+          </div>
 
         </div>
 

@@ -10,7 +10,7 @@ import Image from "next/image";
 
 export default function PesanPage() {
   const router = useRouter();
-  const { senderName, frameId, photos, setFinalImageUrl } = usePhotobooth();
+  const { senderName, frameId, photos, setFinalImageUrl, setMessage: setContextMessage } = usePhotobooth();
   const [message, setMessage] = useState("");
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [mergedBlob, setMergedBlob] = useState<Blob | null>(null);
@@ -77,19 +77,8 @@ export default function PesanPage() {
         
       const publicUrl = publicUrlData.publicUrl;
       
-      // 2. Insert into Database
-      const { error: dbError } = await supabase
-        .from("photobooth_entries")
-        .insert({
-          sender_name: senderName,
-          message: message.trim(),
-          photo_url: publicUrl,
-          frame_id: frameId
-        });
-        
-      if (dbError) throw dbError;
-      
-      // 3. Update Context & Route
+      // 2. Update Context & Route
+      setContextMessage(message.trim());
       setFinalImageUrl(publicUrl);
       router.push("/kenangan-perkahwinan/hasil");
       

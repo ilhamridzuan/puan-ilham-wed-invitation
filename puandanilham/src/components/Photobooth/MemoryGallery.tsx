@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { createClient } from '@/lib/supabase/client';
+import Link from 'next/link';
 
 type PhotoboothEntry = {
   id: string;
@@ -84,9 +85,10 @@ export default function MemoryGallery() {
         /* CSS columns masonry — naturally stacks strips of varying heights */
         <div className="columns-2 gap-2 w-full">
           {entries.map((entry) => (
-            <div
+            <Link
               key={entry.id}
-              className="break-inside-avoid mb-2 w-full overflow-hidden rounded-sm"
+              href={`/kenangan-perkahwinan/lihat/${entry.id}`}
+              className="break-inside-avoid mb-2 w-full overflow-hidden rounded-sm block hover:opacity-90 transition-opacity cursor-pointer"
             >
               <img
                 src={entry.photo_url}
@@ -94,7 +96,7 @@ export default function MemoryGallery() {
                 loading="lazy"
                 className="w-full h-auto object-contain block"
               />
-            </div>
+            </Link>
           ))}
         </div>
       )}
