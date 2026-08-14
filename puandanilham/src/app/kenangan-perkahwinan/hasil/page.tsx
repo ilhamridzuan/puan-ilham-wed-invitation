@@ -102,11 +102,11 @@ export default function HasilPage() {
       </div>
 
       {/* Main Container - Giant Glass Card */}
-      <div className="relative z-10 w-[92%] h-[94%] max-w-md flex flex-col bg-white/20 backdrop-blur-sm rounded-[24px] border border-white/30 shadow-sm px-5 py-6 overflow-hidden">
+      <div className="relative z-10 w-[94%] h-[96%] sm:w-[92%] sm:h-[94%] max-w-md flex flex-col bg-white/20 backdrop-blur-sm rounded-[24px] border border-white/30 shadow-sm px-4 py-5 sm:px-5 sm:py-6 overflow-hidden">
         
         {/* Header: Title & Logo */}
-        <div className="flex w-full flex-col items-center shrink-0 mb-4">
-          <div className="relative h-[45px] w-[120px] shrink-0 mb-1">
+        <div className="flex w-full flex-col items-center shrink-0 mb-3 sm:mb-4">
+          <div className="relative h-[35px] w-[100px] sm:h-[45px] sm:w-[120px] shrink-0 mb-1">
             <Image 
               src="/assets/Title Photobooth.svg" 
               alt="Title Photobooth" 
@@ -114,7 +114,7 @@ export default function HasilPage() {
               className="object-contain" 
             />
           </div>
-          <div className="relative w-[180px] h-[90px] shrink-0">
+          <div className="relative w-[150px] h-[75px] sm:w-[180px] sm:h-[90px] shrink-0">
             <Image 
               src="/assets/Puan&Ilham.svg" 
               alt="Puan & Ilham" 
@@ -125,55 +125,55 @@ export default function HasilPage() {
         </div>
 
         {/* Final Photobooth Display */}
-        <div className="flex-1 w-full relative min-h-0 flex flex-col items-center justify-center overflow-hidden mb-6">
-          <div className="relative w-full max-w-[200px] sm:max-w-[240px] max-h-full flex items-center justify-center">
+        <div className="flex-1 w-full relative min-h-0 flex flex-col items-center justify-center overflow-hidden mb-4 sm:mb-6">
+          <div className="relative h-full max-h-[50vh] sm:max-h-[55vh] w-auto max-w-full flex items-center justify-center">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={finalImageUrl} alt="Hasil Photobooth" className="w-full h-full object-contain drop-shadow-xl" />
+            <img src={finalImageUrl} alt="Hasil Photobooth" className="w-auto h-full max-w-full max-h-full object-contain drop-shadow-xl" />
           </div>
         </div>
 
         {/* Action Buttons */}
-        <div className="w-full shrink-0 flex flex-col gap-3">
+        <div className="w-full shrink-0 flex flex-col gap-2 sm:gap-3">
           
           <button
             onClick={handleDownload}
-            className="flex h-[45px] sm:h-[50px] w-full items-center justify-center gap-3 rounded-[12px] bg-primary hover:bg-[#2c3d75] transition-colors shadow-md text-white"
+            className="flex h-[42px] sm:h-[50px] w-full items-center justify-center gap-2 sm:gap-3 rounded-[12px] bg-primary hover:bg-[#2c3d75] transition-colors shadow-md text-white"
           >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
-            <span className="font-serif text-[16px] sm:text-[18px] italic font-semibold">
+            <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+            <span className="font-serif text-[15px] sm:text-[18px] italic font-semibold">
               Unduh Kenangan
             </span>
           </button>
 
           <button
             onClick={handleShare}
-            className="flex h-[45px] sm:h-[50px] w-full items-center justify-center gap-3 rounded-[12px] bg-white hover:bg-neutral-50 transition-colors shadow-md text-primary"
+            className="flex h-[42px] sm:h-[50px] w-full items-center justify-center gap-2 sm:gap-3 rounded-[12px] bg-white hover:bg-neutral-50 transition-colors shadow-md text-primary"
           >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" /></svg>
-            <span className="font-serif text-[16px] sm:text-[18px] italic font-semibold">
+            <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" /></svg>
+            <span className="font-serif text-[15px] sm:text-[18px] italic font-semibold">
               Bagikan Kenangan
             </span>
           </button>
 
           <button
             onClick={handleRetake}
-            className="flex h-[45px] sm:h-[50px] w-full items-center justify-center gap-3 rounded-[12px] bg-white hover:bg-neutral-50 transition-colors shadow-md text-primary"
+            className="flex h-[42px] sm:h-[50px] w-full items-center justify-center gap-2 sm:gap-3 rounded-[12px] bg-white hover:bg-neutral-50 transition-colors shadow-md text-primary"
           >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
-            <span className="font-serif text-[16px] sm:text-[18px] italic font-semibold">
+            <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
+            <span className="font-serif text-[15px] sm:text-[18px] italic font-semibold">
               Ambil Momen Lagi
             </span>
           </button>
 
           <button
             onClick={handleGallery}
-            className="flex h-[45px] sm:h-[50px] w-full items-center justify-center gap-3 rounded-[12px] bg-white hover:bg-neutral-50 transition-colors shadow-md text-primary"
+            className="flex h-[42px] sm:h-[50px] w-full items-center justify-center gap-2 sm:gap-3 rounded-[12px] bg-white hover:bg-neutral-50 transition-colors shadow-md text-primary"
           >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 22V12h6v10" />
             </svg>
-            <span className="font-serif text-[16px] sm:text-[18px] italic font-semibold">
+            <span className="font-serif text-[15px] sm:text-[18px] italic font-semibold">
               Kembali ke Halaman Utama
             </span>
           </button>

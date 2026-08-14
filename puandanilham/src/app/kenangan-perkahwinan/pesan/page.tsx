@@ -134,7 +134,7 @@ export default function PesanPage() {
       </div>
 
       {/* Main Container - Giant Glass Card */}
-      <div className="relative z-10 w-[92%] h-[94%] max-w-md flex flex-col bg-white/20 backdrop-blur-sm rounded-[24px] border border-white/30 shadow-sm p-5 overflow-hidden">
+      <div className="relative z-10 w-[94%] h-[96%] sm:w-[92%] sm:h-[94%] max-w-md flex flex-col bg-white/20 backdrop-blur-sm rounded-[24px] border border-white/30 shadow-sm p-4 sm:p-5 overflow-hidden">
         
         {/* Top section: Back button */}
         <div className="flex w-full justify-start shrink-0">
@@ -162,8 +162,8 @@ export default function PesanPage() {
         </div>
 
         {/* Header: Title & Logo */}
-        <div className="flex w-full flex-col items-center shrink-0 -mt-2 mb-2">
-          <div className="relative h-[45px] w-[120px] shrink-0 mb-1">
+        <div className="flex w-full flex-col items-center shrink-0 -mt-2 mb-2 sm:mb-4">
+          <div className="relative h-[35px] w-[100px] sm:h-[45px] sm:w-[120px] shrink-0 mb-1">
             <Image 
               src="/assets/Title Photobooth.svg" 
               alt="Title Photobooth" 
@@ -171,7 +171,7 @@ export default function PesanPage() {
               className="object-contain" 
             />
           </div>
-          <div className="relative w-[180px] h-[90px] shrink-0">
+          <div className="relative w-[150px] h-[75px] sm:w-[180px] sm:h-[90px] shrink-0">
             <Image 
               src="/assets/Puan&Ilham.svg" 
               alt="Puan & Ilham" 
@@ -182,19 +182,19 @@ export default function PesanPage() {
         </div>
 
         {/* Photobooth Preview Display */}
-        <div className="flex-1 w-full relative min-h-0 flex flex-col items-center justify-center overflow-hidden mb-4">
+        <div className="flex-1 w-full relative min-h-0 flex flex-col items-center justify-center overflow-hidden mb-2 sm:mb-4 px-2">
           {previewUrl ? (
             <div 
-              className="relative w-full max-w-[220px] bg-white rounded-md shadow-md overflow-hidden flex items-center justify-center mx-auto"
-              style={{ aspectRatio: `${frameConfig.widthInch} / ${frameConfig.heightInch}`, maxHeight: "100%" }}
+              className="relative h-full max-h-[40vh] sm:max-h-[50vh] w-auto max-w-full bg-white rounded-md shadow-md overflow-hidden flex items-center justify-center mx-auto shrink-0"
+              style={{ aspectRatio: `${frameConfig.widthInch} / ${frameConfig.heightInch}` }}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={previewUrl} alt="Preview Photobooth" className="w-full h-full object-contain" />
             </div>
           ) : (
             <div 
-              className="w-full max-w-[220px] bg-white/50 backdrop-blur-md animate-pulse rounded-md flex flex-col items-center justify-center text-primary/70 mx-auto"
-              style={{ aspectRatio: `${frameConfig.widthInch} / ${frameConfig.heightInch}`, maxHeight: "100%" }}
+              className="relative h-full max-h-[40vh] sm:max-h-[50vh] w-auto max-w-full bg-white/50 backdrop-blur-md animate-pulse rounded-md flex flex-col items-center justify-center text-primary/70 mx-auto shrink-0"
+              style={{ aspectRatio: `${frameConfig.widthInch} / ${frameConfig.heightInch}` }}
             >
               <svg className="animate-spin h-8 w-8 mb-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                 <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
@@ -208,10 +208,10 @@ export default function PesanPage() {
         {/* Message Input & Action Area */}
         <div className="w-full shrink-0 flex flex-col items-center pb-2">
           
-          <div className="w-full relative mb-4">
+          <div className="w-full relative mb-3 sm:mb-4">
             <textarea
               id="message"
-              rows={4}
+              rows={3}
               maxLength={200}
               value={message}
               onChange={(e) => {
@@ -219,7 +219,7 @@ export default function PesanPage() {
                 if (error) setError("");
               }}
               placeholder="Tinggalkan pesan untuk kami..."
-              className="w-full bg-white border border-[#b2bee0] rounded-xl p-4 focus:outline-none focus:ring-2 focus:ring-[#384d95] focus:border-transparent resize-none text-[15px] text-gray-800 placeholder:text-gray-400 placeholder:italic shadow-sm transition-all"
+              className="w-full bg-white border border-[#b2bee0] rounded-xl p-3 sm:p-4 focus:outline-none focus:ring-2 focus:ring-[#384d95] focus:border-transparent resize-none text-[14px] sm:text-[15px] text-gray-800 placeholder:text-gray-400 placeholder:italic shadow-sm transition-all"
             />
             {error && <p className="text-red-500 text-sm mt-1 ml-1">{error}</p>}
           </div>
