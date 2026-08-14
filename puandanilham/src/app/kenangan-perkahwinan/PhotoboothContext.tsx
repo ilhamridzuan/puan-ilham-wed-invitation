@@ -11,6 +11,8 @@ type PhotoboothContextType = {
   setPhotos: (photos: string[]) => void;
   finalImageUrl: string | null;
   setFinalImageUrl: (url: string | null) => void;
+  message: string;
+  setMessage: (msg: string) => void;
   reset: () => void;
 };
 
@@ -21,12 +23,14 @@ export function PhotoboothProvider({ children }: { children: ReactNode }) {
   const [frameId, setFrameId] = useState('');
   const [photos, setPhotos] = useState<string[]>([]);
   const [finalImageUrl, setFinalImageUrl] = useState<string | null>(null);
+  const [message, setMessage] = useState('');
 
   const reset = () => {
     setSenderName('');
     setFrameId('');
     setPhotos([]);
     setFinalImageUrl(null);
+    setMessage('');
   };
 
   return (
@@ -40,6 +44,8 @@ export function PhotoboothProvider({ children }: { children: ReactNode }) {
         setPhotos,
         finalImageUrl,
         setFinalImageUrl,
+        message,
+        setMessage,
         reset,
       }}
     >
