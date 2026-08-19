@@ -22,7 +22,7 @@ export default function QuranSection() {
         className="flex-none w-[136%] max-w-[561px]"
       >
         <Image
-          src="/assets/Ayat Qur'an with border & bg.svg"
+          src="/assets/ayat-quran-border-bg.svg"
           alt="Ayat Al-Quran Ar-Rum 30:21 — Dan antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu pasangan daripada jenismu sendiri, supaya kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan antara kamu rasa kasih dan sayang."
           width={561}
           height={664}

@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import Link from 'next/link';
+import { GallerySkeleton } from '../SectionSkeleton';
 
 type PhotoboothEntry = {
   id: string;
@@ -68,11 +69,7 @@ export default function MemoryGallery() {
   };
 
   if (loading && entries.length === 0) {
-    return (
-      <div className="py-12 flex justify-center">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#384D95]"></div>
-      </div>
-    );
+    return <GallerySkeleton />;
   }
 
   return (

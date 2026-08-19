@@ -41,7 +41,7 @@ export default function DressCodeSection() {
         {/* Illustration */}
         <div className="w-full max-w-[240px]">
           <Image
-            src="/assets/Dress Code Illustration.svg"
+            src="/assets/dress-code-illustration.svg"
             alt="Ilustrasi Aturan Berpakaian — Pakaian Kurung Melayu"
             width={240}
             height={397}

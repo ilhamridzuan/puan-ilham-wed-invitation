@@ -30,7 +30,7 @@ export default function KameraPage() {
         }
       } catch (err) {
         console.error("Error accessing camera:", err);
-        setError("Gagal mengakses kamera. Pastikan anda telah memberikan izin.");
+        setError("Gagal mengakses kamera. Pastikan Anda telah memberikan izin.");
       }
     };
     
@@ -127,7 +127,7 @@ export default function KameraPage() {
         <div className="flex flex-col items-center pt-2 max-w-[50%]">
           <div className="relative h-[30px] w-[100px] sm:h-[40px] sm:w-[130px] mb-1 brightness-0 invert opacity-90">
             <Image 
-              src="/assets/Title Photobooth.svg" 
+              src="/assets/title-photobooth.svg" 
               alt="Title Photobooth" 
               fill 
               className="object-contain" 
@@ -135,7 +135,7 @@ export default function KameraPage() {
           </div>
           <div className="relative w-[120px] h-[60px] sm:w-[150px] sm:h-[75px] brightness-0 invert">
             <Image 
-              src="/assets/Puan&Ilham.svg" 
+              src="/assets/puan-dan-ilham.svg" 
               alt="Puan & Ilham" 
               fill 
               className="object-contain"
@@ -211,7 +211,7 @@ export default function KameraPage() {
         <button 
           onClick={handleFlipCamera}
           className="w-12 h-12 sm:w-14 sm:h-14 bg-white/20 hover:bg-white/30 text-white rounded-full flex items-center justify-center shadow-md backdrop-blur-sm transition-colors"
-          title="Tukar Kamera"
+          title="Ganti Kamera"
         >
           <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />

@@ -59,7 +59,7 @@ export default function IntroSection() {
             style={{ maxWidth: "360px" }}
           >
             <Image
-              src="/assets/Puan&Ilham.svg"
+              src="/assets/puan-dan-ilham.svg"
               alt="Puan & Ilham"
               width={360}
               height={245}
@@ -79,7 +79,7 @@ export default function IntroSection() {
           className="mt-2 w-full max-w-[240px]"
         >
           <Image
-            src="/assets/Date&Time.svg"
+            src="/assets/date-time.svg"
             alt="04 . 09 . 2026"
             width={240}
             height={154}

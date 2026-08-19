@@ -14,7 +14,7 @@ export default function InvitationSection() {
       <div
         className="pointer-events-none absolute inset-0 z-0"
         style={{
-          backgroundImage: "url('/assets/Texture.png')",
+          backgroundImage: "url('/assets/texture.png')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           opacity: 0.7,
@@ -30,7 +30,7 @@ export default function InvitationSection() {
         className="relative z-10 w-[115%] max-w-[460px] flex-none"
       >
         <Image
-          src="/assets/Kalimat Jemputan Fix.svg"
+          src="/assets/kalimat-jemputan.svg"
           alt="Kalimat Jemputan — Pesan Undangan Pernikahan Puan & Ilham"
           width={460}
           height={680}

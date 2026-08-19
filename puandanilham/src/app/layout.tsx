@@ -10,7 +10,18 @@ const pinyonScript = Pinyon_Script({
 
 export const metadata: Metadata = {
   title: "Jemputan Majelis Perkahwinan | Puan & Ilham",
-  description: "Jemputan majelis perkahwinan Puan & Ilham",
+  description: "Anda dijemput hadir ke Majelis Perkahwinan Puan & Ilham pada 4 September 2026. Klik untuk RSVP dan informasi lengkap.",
+  openGraph: {
+    title: "Jemputan Majelis Perkahwinan Puan & Ilham",
+    description: "Anda dijemput hadir ke Majelis Perkahwinan Puan & Ilham",
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Jemputan Majelis Perkahwinan Puan & Ilham",
+    images: ["/og-image.jpg"],
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

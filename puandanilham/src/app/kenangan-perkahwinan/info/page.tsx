@@ -30,7 +30,7 @@ export default function InfoPage() {
         aria-hidden="true"
         className="pointer-events-none fixed inset-0 z-0"
         style={{
-          backgroundImage: "url('/assets/Flower Pattern.png')",
+          backgroundImage: "url('/assets/flower-pattern.png')",
           backgroundRepeat: "repeat",
           backgroundSize: "300px auto",
           opacity: 0.2,
@@ -44,7 +44,7 @@ export default function InfoPage() {
         style={{ opacity: 0.7 }}
       >
         <Image
-          src="/assets/Flower Decoration Pop.gif"
+          src="/assets/flower-decoration-pop.gif"
           alt=""
           fill
           className="object-cover md:object-contain"
@@ -87,7 +87,7 @@ export default function InfoPage() {
             {/* Title Photobooth */}
             <div className="relative h-[45px] w-[120px] sm:h-[55px] sm:w-[140px] shrink-0 mb-2 sm:mb-4">
               <Image 
-                src="/assets/Title Photobooth.svg" 
+                src="/assets/title-photobooth.svg" 
                 alt="Title Photobooth" 
                 fill 
                 className="object-contain" 
@@ -97,7 +97,7 @@ export default function InfoPage() {
             {/* Puan & Ilham Logo */}
             <div className="relative w-[200px] h-[100px] sm:w-[240px] sm:h-[120px] shrink-0">
               <Image 
-                src="/assets/Puan&Ilham.svg" 
+                src="/assets/puan-dan-ilham.svg" 
                 alt="Puan & Ilham" 
                 fill 
                 className="object-contain"
