@@ -23,8 +23,8 @@ export default function ScheduleSection() {
 
         {/* Schedule Graphic */}
         <Image
-          src="/assets/Atur Cara Fix.svg"
-          alt="Atur Cara — Jadual Susunan Acara Perkahwinan"
+          src="/assets/atur-cara.svg"
+          alt="Atur Cara — Jadwal Susunan Acara Perkahwinan"
           width={380}
           height={480}
           className="h-auto w-full"

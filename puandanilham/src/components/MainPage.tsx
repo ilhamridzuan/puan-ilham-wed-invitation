@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { lazy, Suspense } from "react";
+import { ErrorBoundary } from "./ErrorBoundary";
 
 // Eagerly import the first visible section; lazy-load the rest for performance
 import IntroSection from "./sections/IntroSection";
@@ -16,12 +17,14 @@ const RSVPSection = lazy(() => import("./sections/RSVPSection"));
 const WishesSection = lazy(() => import("./sections/WishesSection"));
 const FooterSection = lazy(() => import("./sections/FooterSection"));
 
+import { WishesSkeleton } from './SectionSkeleton';
+
 function SectionLoader() {
   return (
     <div className="flex w-full items-center justify-center py-20">
       <span
         className="inline-block h-8 w-8 animate-spin rounded-full border-2 border-primary border-t-transparent"
-        aria-label="Memuatkan..."
+        aria-label="Memuat..."
       />
     </div>
   );
@@ -55,7 +58,7 @@ export default function MainPage() {
         aria-hidden="true"
         className="pointer-events-none fixed inset-0 z-0"
         style={{
-          backgroundImage: "url('/assets/Flower Pattern.png')",
+          backgroundImage: "url('/assets/flower-pattern.png')",
           backgroundRepeat: "repeat",
           backgroundSize: "300px auto",
           opacity: 0.2,
@@ -69,7 +72,7 @@ export default function MainPage() {
         style={{ opacity: 0.7 }}
       >
         <Image
-          src="/assets/Flower Decoration Pop.gif"
+          src="/assets/flower-decoration-pop.gif"
           alt=""
           fill
           className="object-cover"
@@ -82,7 +85,9 @@ export default function MainPage() {
       <div className="relative z-10 flex w-full flex-col items-center">
 
       {/* 1. Intro */}
-      <IntroSection />
+      <ErrorBoundary sectionName="Intro">
+        <IntroSection />
+      </ErrorBoundary>
 
       {/* 2. Quran Verse */}
       <Suspense fallback={<SectionLoader />}>

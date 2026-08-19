@@ -40,7 +40,7 @@ export default function WishesTable({ initialWishes }: { initialWishes: Wish[] }
               <td className="p-3 font-medium">{w.name}</td>
               <td className="p-3 whitespace-pre-wrap">{w.message}</td>
               <td className="p-3 text-gray-400 whitespace-nowrap">
-                {new Date(w.created_at).toLocaleString('ms-MY')}
+                {new Date(w.created_at).toLocaleString('id-ID')}
               </td>
               <td className="p-3 flex gap-2">
                 <button

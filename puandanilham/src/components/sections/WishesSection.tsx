@@ -80,7 +80,7 @@ export default function WishesSection() {
         {/* Background Pattern */}
         <div className="absolute inset-0 z-0 opacity-20">
           <Image
-            src="/assets/Flower Pattern.png"
+            src="/assets/flower-pattern.png"
             alt="Flower Pattern"
             fill
             className="object-cover"
@@ -125,7 +125,7 @@ export default function WishesSection() {
                 {/* Background Pattern */}
                 <div className="absolute inset-0 z-0 opacity-20">
                   <Image
-                    src="/assets/Flower Pattern.png"
+                    src="/assets/flower-pattern.png"
                     alt="Flower Pattern"
                     fill
                     className="object-cover"

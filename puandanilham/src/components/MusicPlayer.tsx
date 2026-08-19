@@ -27,6 +27,7 @@ interface MusicPlayerProps {
 export default function MusicPlayer({ isPlayingProp, forcePlayTrigger }: MusicPlayerProps) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [playFailed, setPlayFailed] = useState(false);
 
   const attemptPlay = () => {
     if (audioRef.current && !isPlaying) {
@@ -36,8 +37,11 @@ export default function MusicPlayer({ isPlayingProp, forcePlayTrigger }: MusicPl
       
       audioRef.current.play().then(() => {
         setIsPlaying(true);
+        setPlayFailed(false);
       }).catch((e) => {
         console.error("Autoplay prevented:", e);
+        setIsPlaying(false);
+        setPlayFailed(true);
       });
     }
   };
@@ -76,7 +80,7 @@ export default function MusicPlayer({ isPlayingProp, forcePlayTrigger }: MusicPl
     <>
       <audio
         ref={audioRef}
-        src="/assets/Dayang Nurfaizah, Hael Husaini - Gurindam Jiwa (Official Music Video).mp3"
+        src="/assets/gurindam-jiwa.mp3"
         onEnded={handleEnded}
       />
       <AnimatePresence>
@@ -89,9 +93,15 @@ export default function MusicPlayer({ isPlayingProp, forcePlayTrigger }: MusicPl
           >
             <button
               onClick={togglePlay}
-              className="flex h-12 w-12 items-center justify-center rounded-full bg-white/40 backdrop-blur-md text-[#384D95] shadow-lg border border-white/50 transition-transform active:scale-95 hover:bg-white/50"
-              aria-label={isPlaying ? "Jeda Muzik" : "Main Muzik"}
+              className={`flex h-12 w-12 items-center justify-center rounded-full bg-white/40 backdrop-blur-md text-[#384D95] shadow-lg border border-white/50 transition-transform active:scale-95 hover:bg-white/50 relative ${playFailed ? 'animate-bounce' : ''}`}
+              aria-label={isPlaying ? "Jeda Musik" : "Putar Musik"}
             >
+              {playFailed && (
+                <span className="absolute -top-1 -right-1 flex h-3 w-3">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
+                </span>
+              )}
               {isPlaying ? <PauseIcon /> : <PlayIcon />}
             </button>
           </motion.div>

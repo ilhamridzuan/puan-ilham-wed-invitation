@@ -14,7 +14,7 @@ export default function PhotoboothIntroSection() {
       {/* Title */}
       <div className="w-56 h-20 relative mb-4">
         <Image
-          src="/assets/Title Photobooth.svg"
+          src="/assets/title-photobooth.svg"
           alt="Kenangan Perkahwinan"
           fill
           className="object-contain"
@@ -24,7 +24,7 @@ export default function PhotoboothIntroSection() {
       {/* Puan & Ilham name */}
       <div className="w-[576px] max-w-[140%] h-[288px] relative mb-8">
         <Image
-          src="/assets/Puan&Ilham.svg"
+          src="/assets/puan-dan-ilham.svg"
           alt="Puan & Ilham"
           fill
           className="object-contain"

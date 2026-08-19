@@ -24,7 +24,7 @@ export default function PhotoboothCoverPage({ onOpen }: { onOpen: () => void }) 
       {/* Background Image - Full screen */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/assets/Backgroudn.png"
+          src="/assets/optimized/background.webp"
           alt="Background"
           fill
           className="object-cover"
@@ -43,7 +43,7 @@ export default function PhotoboothCoverPage({ onOpen }: { onOpen: () => void }) 
         >
           <div className="relative w-[70%] max-w-[347px] h-full">
             <Image
-              src="/assets/Border Floral 1.svg"
+              src="/assets/border-floral.svg"
               alt="Top Left Border"
               fill
               className="object-contain object-left-bottom"
@@ -51,7 +51,7 @@ export default function PhotoboothCoverPage({ onOpen }: { onOpen: () => void }) 
           </div>
           <div className="relative w-[70%] max-w-[347px] h-full scale-x-[-1]">
             <Image
-              src="/assets/Border Floral 1.svg"
+              src="/assets/border-floral.svg"
               alt="Top Right Border"
               fill
               className="object-contain object-left-bottom"
@@ -68,7 +68,7 @@ export default function PhotoboothCoverPage({ onOpen }: { onOpen: () => void }) 
         >
           <div className="relative w-[70%] max-w-[347px] h-full">
             <Image
-              src="/assets/Border Floral 1.svg"
+              src="/assets/border-floral.svg"
               alt="Bottom Left Border"
               fill
               className="object-contain object-left-bottom"
@@ -76,7 +76,7 @@ export default function PhotoboothCoverPage({ onOpen }: { onOpen: () => void }) 
           </div>
           <div className="relative w-[70%] max-w-[347px] h-full scale-x-[-1]">
             <Image
-              src="/assets/Border Floral 1.svg"
+              src="/assets/border-floral.svg"
               alt="Bottom Right Border"
               fill
               className="object-contain object-left-bottom"
@@ -97,11 +97,11 @@ export default function PhotoboothCoverPage({ onOpen }: { onOpen: () => void }) 
           <div 
             className="w-full aspect-[342/80] bg-[#384D95]"
             style={{
-              maskImage: 'url("/assets/Title Photobooth.svg")',
+              maskImage: 'url("/assets/title-photobooth.svg")',
               maskSize: 'contain',
               maskRepeat: 'no-repeat',
               maskPosition: 'center',
-              WebkitMaskImage: 'url("/assets/Title Photobooth.svg")',
+              WebkitMaskImage: 'url("/assets/title-photobooth.svg")',
               WebkitMaskSize: 'contain',
               WebkitMaskRepeat: 'no-repeat',
               WebkitMaskPosition: 'center',
@@ -118,7 +118,7 @@ export default function PhotoboothCoverPage({ onOpen }: { onOpen: () => void }) 
           className="absolute inset-0 flex items-center justify-center pt-[10dvh] z-10 pointer-events-none"
         >
           <Image
-            src="/assets/Ilustrasi with border.svg"
+            src="/assets/ilustrasi-with-border.svg"
             alt="Couple Illustration"
             width={864}
             height={1022}

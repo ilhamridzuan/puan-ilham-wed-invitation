@@ -7,9 +7,9 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const FRAMES = [
-  { id: "1", src: "/assets/Strip Photobooth 1 Photo.svg", name: "1 Foto" },
-  { id: "2", src: "/assets/Strip Photobooth 2 Photo.svg", name: "2 Foto" },
-  { id: "4", src: "/assets/Strip Photobooth 4 Photo.svg", name: "4 Foto" },
+  { id: "1", src: "/assets/strip-photobooth-1-photo.svg", name: "1 Foto" },
+  { id: "2", src: "/assets/strip-photobooth-2-photo.svg", name: "2 Foto" },
+  { id: "4", src: "/assets/strip-photobooth-4-photo.svg", name: "4 Foto" },
 ];
 
 const variants = {
@@ -79,7 +79,7 @@ export default function PilihBingkaiPage() {
         aria-hidden="true"
         className="pointer-events-none fixed inset-0 z-0"
         style={{
-          backgroundImage: "url('/assets/Flower Pattern.png')",
+          backgroundImage: "url('/assets/flower-pattern.png')",
           backgroundRepeat: "repeat",
           backgroundSize: "300px auto",
           opacity: 0.2,
@@ -93,7 +93,7 @@ export default function PilihBingkaiPage() {
         style={{ opacity: 0.7 }}
       >
         <Image
-          src="/assets/Flower Decoration Pop.gif"
+          src="/assets/flower-decoration-pop.gif"
           alt=""
           fill
           className="object-cover md:object-contain"
@@ -134,7 +134,7 @@ export default function PilihBingkaiPage() {
           {/* Title Photobooth */}
           <div className="relative h-[45px] w-[120px] shrink-0 mb-1">
             <Image 
-              src="/assets/Title Photobooth.svg" 
+              src="/assets/title-photobooth.svg" 
               alt="Title Photobooth" 
               fill 
               className="object-contain" 
@@ -144,7 +144,7 @@ export default function PilihBingkaiPage() {
           {/* Puan & Ilham Logo */}
           <div className="relative w-[180px] h-[90px] shrink-0 mb-1">
             <Image 
-              src="/assets/Puan&Ilham.svg" 
+              src="/assets/puan-dan-ilham.svg" 
               alt="Puan & Ilham" 
               fill 
               className="object-contain"
@@ -213,7 +213,7 @@ export default function PilihBingkaiPage() {
           <button
             className="absolute right-1 z-20 p-2 rounded-full bg-white/40 backdrop-blur-md shadow-md border border-white/50 text-primary hover:bg-white/60 transition-colors active:scale-95"
             onClick={() => paginate(1)}
-            aria-label="Bingkai Seterusnya"
+            aria-label="Bingkai Selanjutnya"
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="m9 18 6-6-6-6"/>

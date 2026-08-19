@@ -49,7 +49,7 @@ export default function FooterSection() {
         {/* Background Pattern */}
         <div className="absolute inset-0 z-0 opacity-30">
           <Image
-            src="/assets/Flower Pattern.png"
+            src="/assets/flower-pattern.png"
             alt="Flower Pattern"
             fill
             className="object-cover"
@@ -71,7 +71,7 @@ export default function FooterSection() {
 
           <div className="w-full max-w-[177px]">
             <Image
-              src="/assets/Puan&Ilham.svg"
+              src="/assets/puan-dan-ilham.svg"
               alt="Puan & Ilham"
               width={177}
               height={120}

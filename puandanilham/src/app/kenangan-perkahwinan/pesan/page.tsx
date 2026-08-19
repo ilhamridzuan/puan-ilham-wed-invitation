@@ -29,10 +29,10 @@ export default function PesanPage() {
     const generatePreview = async () => {
       try {
         const frameUrl = frameId === "1" 
-          ? "/assets/Strip Photobooth 1 Photo.svg"
+          ? "/assets/strip-photobooth-1-photo.svg"
           : frameId === "2" 
-            ? "/assets/Strip Photobooth 2 Photo.svg"
-            : "/assets/Strip Photobooth 4 Photo.svg";
+            ? "/assets/strip-photobooth-2-photo.svg"
+            : "/assets/strip-photobooth-4-photo.svg";
 
         const blob = await mergePhotoAndFrame(photos, frameUrl, frameConfig, 1200);
         setMergedBlob(blob);
@@ -49,7 +49,7 @@ export default function PesanPage() {
   const handleSubmit = async () => {
     if (!mergedBlob) return;
     if (message.trim().length === 0) {
-      setError("Sila isi mesej untuk pengantin.");
+      setError("Silakan isi pesan untuk pengantin.");
       return;
     }
     
@@ -84,7 +84,7 @@ export default function PesanPage() {
       
     } catch (err) {
       console.error("Submit error:", err);
-      setError("Terjadi kesalahan saat mengirim data. Sila cuba lagi.");
+      setError("Terjadi kesalahan saat mengirim data. Silakan coba lagi.");
       setIsSubmitting(false);
     }
   };
@@ -99,7 +99,7 @@ export default function PesanPage() {
         aria-hidden="true"
         className="pointer-events-none fixed inset-0 z-0"
         style={{
-          backgroundImage: "url('/assets/Flower Pattern.png')",
+          backgroundImage: "url('/assets/flower-pattern.png')",
           backgroundRepeat: "repeat",
           backgroundSize: "300px auto",
           opacity: 0.2,
@@ -113,7 +113,7 @@ export default function PesanPage() {
         style={{ opacity: 0.7 }}
       >
         <Image
-          src="/assets/Flower Decoration Pop.gif"
+          src="/assets/flower-decoration-pop.gif"
           alt=""
           fill
           className="object-cover md:object-contain"
@@ -154,7 +154,7 @@ export default function PesanPage() {
         <div className="flex w-full flex-col items-center shrink-0 -mt-2 mb-2 sm:mb-4">
           <div className="relative h-[35px] w-[100px] sm:h-[45px] sm:w-[120px] shrink-0 mb-1">
             <Image 
-              src="/assets/Title Photobooth.svg" 
+              src="/assets/title-photobooth.svg" 
               alt="Title Photobooth" 
               fill 
               className="object-contain" 
@@ -162,7 +162,7 @@ export default function PesanPage() {
           </div>
           <div className="relative w-[150px] h-[75px] sm:w-[180px] sm:h-[90px] shrink-0">
             <Image 
-              src="/assets/Puan&Ilham.svg" 
+              src="/assets/puan-dan-ilham.svg" 
               alt="Puan & Ilham" 
               fill 
               className="object-contain"

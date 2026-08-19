@@ -23,7 +23,7 @@ export default function DateLocationSection() {
   return (
     <section
       id="lokasi"
-      aria-label="Tarikh & Lokasi"
+      aria-label="Tanggal & Lokasi"
       className="flex w-full flex-col items-center gap-10 px-4 py-12"
     >
       {/* Top Section: Date & Calendar */}
@@ -36,7 +36,7 @@ export default function DateLocationSection() {
         className="flex w-full max-w-[380px] justify-center rounded-2xl border border-white/30 bg-white/20 p-6 shadow-sm backdrop-blur-sm"
       >
         <Image
-          src="/assets/September 4th Calendar.svg"
+          src="/assets/september-4th-calendar.svg"
           alt="4 September Calendar"
           width={270}
           height={327}
@@ -56,7 +56,7 @@ export default function DateLocationSection() {
         <h2 className="font-script text-5xl text-primary">Lokasi Majelis</h2>
         
         <Image
-          src="/assets/Location Ilustration.svg"
+          src="/assets/location-illustration.svg"
           alt="Lokasi Ilustration"
           width={100}
           height={100}

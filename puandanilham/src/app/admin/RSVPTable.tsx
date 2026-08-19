@@ -116,7 +116,7 @@ export default function RSVPTable({ initialRsvps }: { initialRsvps: RSVP[] }) {
 
                 {/* Waktu Kirim */}
                 <td className="p-3 text-gray-400">
-                  {new Date(r.created_at).toLocaleString('ms-MY')}
+                  {new Date(r.created_at).toLocaleString('id-ID')}
                 </td>
 
                 {/* Tindakan */}

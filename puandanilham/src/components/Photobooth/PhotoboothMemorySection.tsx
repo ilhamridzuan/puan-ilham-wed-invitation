@@ -13,7 +13,7 @@ export default function PhotoboothMemorySection() {
       <div className="w-full flex flex-col items-center mb-4">
         <div className="w-60 h-[94px] relative">
           <Image
-            src="/assets/Title Photobooth.svg"
+            src="/assets/title-photobooth.svg"
             alt="Kenangan Perkahwinan"
             fill
             className="object-contain"

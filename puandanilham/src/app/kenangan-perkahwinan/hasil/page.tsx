@@ -5,6 +5,7 @@ import { usePhotobooth } from "../PhotoboothContext";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { createClient } from "@/lib/supabase/client";
+import { sanitizeInput } from "@/lib/sanitize";
 
 export default function HasilPage() {
   const router = useRouter();
@@ -27,8 +28,8 @@ export default function HasilPage() {
       const { error: dbError } = await supabase
         .from("photobooth_entries")
         .insert({
-          sender_name: senderName,
-          message: message,
+          sender_name: sanitizeInput(senderName),
+          message: sanitizeInput(message),
           photo_url: finalImageUrl,
           frame_id: frameId
         });
@@ -37,7 +38,7 @@ export default function HasilPage() {
       setIsSaved(true);
     } catch (err) {
       console.error("Save to gallery failed:", err);
-      alert("Gagal menyimpan ke galeri. Sila cuba lagi.");
+      alert("Gagal menyimpan ke galeri. Silakan coba lagi.");
     } finally {
       setIsSaving(false);
     }
@@ -77,7 +78,7 @@ export default function HasilPage() {
     } else {
       try {
         await navigator.clipboard.writeText(finalImageUrl);
-        alert("Tautan disalin ke papan klip!");
+        alert("Tautan berhasil disalin!");
       } catch (err) {
         console.error("Copy failed:", err);
       }
@@ -106,7 +107,7 @@ export default function HasilPage() {
         aria-hidden="true"
         className="pointer-events-none fixed inset-0 z-0"
         style={{
-          backgroundImage: "url('/assets/Flower Pattern.png')",
+          backgroundImage: "url('/assets/flower-pattern.png')",
           backgroundRepeat: "repeat",
           backgroundSize: "300px auto",
           opacity: 0.2,
@@ -120,7 +121,7 @@ export default function HasilPage() {
         style={{ opacity: 0.7 }}
       >
         <Image
-          src="/assets/Flower Decoration Pop.gif"
+          src="/assets/flower-decoration-pop.gif"
           alt=""
           fill
           className="object-cover md:object-contain"
@@ -136,7 +137,7 @@ export default function HasilPage() {
         <div className="flex w-full flex-col items-center shrink-0 mb-3 sm:mb-4">
           <div className="relative h-[35px] w-[100px] sm:h-[45px] sm:w-[120px] shrink-0 mb-1">
             <Image 
-              src="/assets/Title Photobooth.svg" 
+              src="/assets/title-photobooth.svg" 
               alt="Title Photobooth" 
               fill 
               className="object-contain" 
@@ -144,7 +145,7 @@ export default function HasilPage() {
           </div>
           <div className="relative w-[150px] h-[75px] sm:w-[180px] sm:h-[90px] shrink-0">
             <Image 
-              src="/assets/Puan&Ilham.svg" 
+              src="/assets/puan-dan-ilham.svg" 
               alt="Puan & Ilham" 
               fill 
               className="object-contain"
@@ -186,7 +187,7 @@ export default function HasilPage() {
           </button>
           
           <p className="text-center text-[10px] sm:text-xs text-gray-700 px-2 leading-tight">
-            Kami sangat berterimakasih jika anda berkenan untuk momen ini ditampilkan ke galeri kenangan.
+            Kami sangat berterima kasih jika Anda berkenan untuk momen ini ditampilkan ke galeri kenangan.
           </p>
           </div>
 

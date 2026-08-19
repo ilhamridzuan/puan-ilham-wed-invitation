@@ -1,8 +1,21 @@
 import { NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
+import { rsvpLimiter } from '@/lib/rateLimit'
+import { headers } from 'next/headers'
+import { sanitizeInput } from '@/lib/sanitize'
 import type { RSVP } from '@/lib/types'
 
 export async function POST(request: Request) {
+  const headersList = await headers()
+  const ip = headersList.get('x-forwarded-for') ?? headersList.get('x-real-ip') ?? 'unknown'
+  
+  if (!rsvpLimiter(ip)) {
+    return NextResponse.json(
+      { error: 'Terlalu banyak permintaan. Silakan coba sebentar lagi.' },
+      { status: 429 }
+    )
+  }
+
   const supabase = await createClient()
   const body: Omit<RSVP, 'id' | 'created_at'> = await request.json()
 
@@ -24,7 +37,7 @@ export async function POST(request: Request) {
 
   const { error } = await supabase
     .from('rsvps')
-    .insert({ name: name.trim(), attendance, guest_count })
+    .insert({ name: sanitizeInput(name), attendance, guest_count })
 
   if (error) {
     return NextResponse.json({ error: error.message }, { status: 500 })
