@@ -9,6 +9,10 @@ type PhotoboothContextType = {
   setFrameId: (id: string) => void;
   photos: string[];
   setPhotos: (photos: string[]) => void;
+  filterId: string;
+  setFilterId: (id: string) => void;
+  filterCss: string;
+  setFilterCss: (css: string) => void;
   finalImageUrl: string | null;
   setFinalImageUrl: (url: string | null) => void;
   message: string;
@@ -22,6 +26,8 @@ export function PhotoboothProvider({ children }: { children: ReactNode }) {
   const [senderName, setSenderName] = useState('');
   const [frameId, setFrameId] = useState('');
   const [photos, setPhotos] = useState<string[]>([]);
+  const [filterId, setFilterId] = useState('original');
+  const [filterCss, setFilterCss] = useState('none');
   const [finalImageUrl, setFinalImageUrl] = useState<string | null>(null);
   const [message, setMessage] = useState('');
 
@@ -29,6 +35,8 @@ export function PhotoboothProvider({ children }: { children: ReactNode }) {
     setSenderName('');
     setFrameId('');
     setPhotos([]);
+    setFilterId('original');
+    setFilterCss('none');
     setFinalImageUrl(null);
     setMessage('');
   };
@@ -42,6 +50,10 @@ export function PhotoboothProvider({ children }: { children: ReactNode }) {
         setFrameId,
         photos,
         setPhotos,
+        filterId,
+        setFilterId,
+        filterCss,
+        setFilterCss,
         finalImageUrl,
         setFinalImageUrl,
         message,

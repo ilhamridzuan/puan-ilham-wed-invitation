@@ -10,7 +10,7 @@ import Image from "next/image";
 
 export default function PesanPage() {
   const router = useRouter();
-  const { senderName, frameId, photos, setFinalImageUrl, setMessage: setContextMessage } = usePhotobooth();
+  const { senderName, frameId, photos, filterCss, setFinalImageUrl, setMessage: setContextMessage } = usePhotobooth();
   const [message, setMessage] = useState("");
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [mergedBlob, setMergedBlob] = useState<Blob | null>(null);
@@ -34,7 +34,7 @@ export default function PesanPage() {
             ? "/assets/strip-photobooth-2-photo.svg"
             : "/assets/strip-photobooth-4-photo.svg";
 
-        const blob = await mergePhotoAndFrame(photos, frameUrl, frameConfig, 1200);
+        const blob = await mergePhotoAndFrame(photos, frameUrl, frameConfig, 1200, filterCss);
         setMergedBlob(blob);
         setPreviewUrl(URL.createObjectURL(blob));
       } catch (err) {
