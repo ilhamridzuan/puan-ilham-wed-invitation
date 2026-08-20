@@ -4,7 +4,8 @@ export async function mergePhotoAndFrame(
   photos: string[],
   frameUrl: string,
   config: FrameConfig,
-  finalWidth: number = 1200
+  finalWidth: number = 1200,
+  filterCss: string = 'none'
 ): Promise<Blob> {
   return new Promise((resolve, reject) => {
     const frameImg = new Image();
@@ -42,6 +43,12 @@ export async function mergePhotoAndFrame(
         const pHeight = (config.photoHeightInch / config.heightInch) * finalHeight;
 
         // 3. Draw Photos
+        // Apply CSS filter ke context sebelum draw foto
+        const supportsCtxFilter = 'filter' in ctx;
+        if (filterCss && filterCss !== 'none' && supportsCtxFilter) {
+          ctx.filter = filterCss;
+        }
+
         for (let i = 0; i < config.photoCount; i++) {
           const photoUrl = photos[i] || photos[0]; // Fallback to first if missing
           const photoImg = await loadImage(photoUrl);
@@ -67,6 +74,11 @@ export async function mergePhotoAndFrame(
           }
 
           drawCover(ctx, photoImg, x, y, pWidth, pHeight);
+        }
+
+        // Reset filter sebelum draw bingkai agar bingkai tidak ter-filter
+        if (supportsCtxFilter) {
+          ctx.filter = 'none';
         }
 
         // 4. Draw transparent-ified frame on top

@@ -60,7 +60,7 @@ export default function MetodeFotoPage() {
           finalPhotos = finalPhotos.slice(0, totalPhotos);
           
           setPhotos(finalPhotos);
-          router.push("/kenangan-perkahwinan/pesan");
+          router.push("/kenangan-perkahwinan/filter");
         }
       });
     }

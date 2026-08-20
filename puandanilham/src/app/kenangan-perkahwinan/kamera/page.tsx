@@ -81,7 +81,7 @@ export default function KameraPage() {
         
         if (newPhotos.length >= totalPhotos) {
           setPhotos(newPhotos);
-          router.push("/kenangan-perkahwinan/pesan");
+          router.push("/kenangan-perkahwinan/filter");
         }
       }
     }
