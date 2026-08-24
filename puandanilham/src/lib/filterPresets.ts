@@ -6,13 +6,13 @@ export interface FilterPreset {
 
 export const FILTER_PRESETS: FilterPreset[] = [
   { id: 'original', name: 'Asli',        css: 'none' },
-  { id: 'warm',     name: 'Hangat',      css: 'brightness(1.1) saturate(1.3) sepia(0.15)' },
-  { id: 'cool',     name: 'Sejuk',       css: 'brightness(1.05) saturate(0.9) hue-rotate(15deg)' },
-  { id: 'vintage',  name: 'Vintage',     css: 'sepia(0.4) contrast(0.9) brightness(1.1) saturate(1.5)' },
-  { id: 'bw',       name: 'Hitam Putih', css: 'grayscale(100%) brightness(1.2) contrast(1.05)' },
-  { id: 'soft',     name: 'Lembut',      css: 'brightness(1.15) contrast(0.95) saturate(1.1)' },
-  { id: 'dramatic', name: 'Dramatik',    css: 'contrast(1.4) brightness(0.9) saturate(1.2)' },
-  { id: 'rose',     name: 'Mawar',       css: 'sepia(0.15) saturate(1.4) hue-rotate(-10deg) brightness(1.05)' },
+  { id: 'warm',     name: 'Hangat',      css: 'brightness(110%) saturate(130%) sepia(15%)' },
+  { id: 'cool',     name: 'Sejuk',       css: 'brightness(105%) saturate(90%) hue-rotate(15deg)' },
+  { id: 'vintage',  name: 'Vintage',     css: 'sepia(40%) contrast(90%) brightness(110%) saturate(150%)' },
+  { id: 'bw',       name: 'Hitam Putih', css: 'grayscale(100%) brightness(120%) contrast(105%)' },
+  { id: 'soft',     name: 'Lembut',      css: 'brightness(115%) contrast(95%) saturate(110%)' },
+  { id: 'dramatic', name: 'Dramatik',    css: 'contrast(140%) brightness(90%) saturate(120%)' },
+  { id: 'rose',     name: 'Mawar',       css: 'sepia(15%) saturate(140%) hue-rotate(-10deg) brightness(105%)' },
 ]
 
 export function getFilterPreset(filterId: string): FilterPreset {

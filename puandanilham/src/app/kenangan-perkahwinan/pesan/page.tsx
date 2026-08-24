@@ -44,7 +44,7 @@ export default function PesanPage() {
     };
 
     generatePreview();
-  }, [photos, frameId, frameConfig, router]);
+  }, [photos, frameId, frameConfig, filterCss, router]);
 
   const handleSubmit = async () => {
     if (!mergedBlob) return;
