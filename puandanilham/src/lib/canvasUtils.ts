@@ -43,11 +43,7 @@ export async function mergePhotoAndFrame(
         const pHeight = (config.photoHeightInch / config.heightInch) * finalHeight;
 
         // 3. Draw Photos
-        // Apply CSS filter ke context sebelum draw foto
         const supportsCtxFilter = 'filter' in ctx;
-        if (filterCss && filterCss !== 'none' && supportsCtxFilter) {
-          ctx.filter = filterCss;
-        }
 
         for (let i = 0; i < config.photoCount; i++) {
           const photoUrl = photos[i] || photos[0]; // Fallback to first if missing
@@ -73,12 +69,12 @@ export async function mergePhotoAndFrame(
             y = vMargin + row * (pHeight + vMargin);
           }
 
+          ctx.save();
+          if (supportsCtxFilter && filterCss && filterCss !== 'none') {
+            ctx.filter = filterCss;
+          }
           drawCover(ctx, photoImg, x, y, pWidth, pHeight);
-        }
-
-        // Reset filter sebelum draw bingkai agar bingkai tidak ter-filter
-        if (supportsCtxFilter) {
-          ctx.filter = 'none';
+          ctx.restore();
         }
 
         // 4. Draw transparent-ified frame on top
