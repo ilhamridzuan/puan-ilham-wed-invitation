@@ -52,7 +52,7 @@ export default function HasilPage() {
       const url = window.URL.createObjectURL(blob);
       const link = document.createElement("a");
       link.href = url;
-      link.download = `kenangan-puan-ilham-${senderName.replace(/\s+/g, "-").toLowerCase()}.webp`;
+      link.download = `kenangan-puan-ilham-${senderName.replace(/\s+/g, "-").toLowerCase()}.png`;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);

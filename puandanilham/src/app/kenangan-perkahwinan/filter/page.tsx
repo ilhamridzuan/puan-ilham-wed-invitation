@@ -117,8 +117,8 @@ export default function FilterPage() {
           >
             <div className={`w-full h-full ${
               frameConfig.layout === 'single' ? 'flex items-center justify-center' :
-              frameConfig.layout === 'vertical' ? 'flex flex-col gap-2 sm:gap-3 justify-center' :
-              'grid grid-cols-2 grid-rows-2 gap-2 sm:gap-3'
+              frameConfig.layout === 'vertical' ? 'flex flex-col justify-center' :
+              'grid grid-cols-2 grid-rows-2'
             }`}>
               {Array.from({ length: frameConfig.photoCount }).map((_, i) => (
                 <div key={i} className={`relative w-full h-full overflow-hidden bg-gray-200 shadow-sm ${frameConfig.layout === 'vertical' ? 'flex-1' : ''}`}>

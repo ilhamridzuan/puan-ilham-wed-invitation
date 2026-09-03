@@ -38,9 +38,9 @@ export async function mergePhotoAndFrame(
         }
         offCtx.putImageData(frameData, 0, 0);
 
-        // 2. Calculate photo dimensions on canvas
-        const pWidth = (config.photoWidthInch / config.widthInch) * finalWidth;
-        const pHeight = (config.photoHeightInch / config.heightInch) * finalHeight;
+        // 2. Calculate scaling factors based on actual SVG dimensions vs final canvas size
+        const scaleX = finalWidth / config.svgViewBoxWidth;
+        const scaleY = finalHeight / config.svgViewBoxHeight;
 
         // 3. Draw Photos
         const supportsCtxFilter = 'filter' in ctx;
@@ -49,25 +49,14 @@ export async function mergePhotoAndFrame(
           const photoUrl = photos[i] || photos[0]; // Fallback to first if missing
           const photoImg = await loadImage(photoUrl);
 
-          let x = 0;
-          let y = 0;
-
-          if (config.layout === 'single') {
-            x = (finalWidth - pWidth) / 2;
-            y = (finalHeight * (0.25 / config.heightInch)); // Top margin ~0.25 inch
-          } else if (config.layout === 'vertical') {
-            x = (finalWidth - pWidth) / 2;
-            const topMargin = finalHeight * (0.15 / config.heightInch);
-            const gap = finalHeight * (0.3 / config.heightInch);
-            y = topMargin + (i * (pHeight + gap));
-          } else if (config.layout === 'grid') {
-            const hMargin = finalWidth * (0.2 / config.widthInch);
-            const vMargin = finalHeight * (0.2 / config.heightInch);
-            const col = i % 2;
-            const row = Math.floor(i / 2);
-            x = hMargin + col * (pWidth + hMargin);
-            y = vMargin + row * (pHeight + vMargin);
-          }
+          // Get the exact slot from SVG config
+          const slot = config.photoSlots[i] || config.photoSlots[0];
+          
+          // Calculate the pixel position and dimensions on the canvas
+          const x = slot.x * scaleX;
+          const y = slot.y * scaleY;
+          const pWidth = slot.w * scaleX;
+          const pHeight = slot.h * scaleY;
 
           ctx.save();
           if (supportsCtxFilter && filterCss && filterCss !== 'none') {
@@ -80,7 +69,7 @@ export async function mergePhotoAndFrame(
         // 4. Draw transparent-ified frame on top
         ctx.drawImage(offCanvas, 0, 0, finalWidth, finalHeight);
 
-        // 5. Export to WebP
+        // 5. Export to PNG
         canvas.toBlob(
           (blob) => {
             if (blob) {
@@ -89,8 +78,7 @@ export async function mergePhotoAndFrame(
               reject(new Error('Failed to create blob'));
             }
           },
-          'image/webp',
-          0.8
+          'image/png'
         );
       } catch (err) {
         reject(err);
