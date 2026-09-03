@@ -2,8 +2,6 @@
 
 import { useRouter } from "next/navigation";
 import { usePhotobooth } from "../PhotoboothContext";
-import { useRef } from "react";
-import { getFrameConfig } from "@/lib/frameConfigs";
 import Image from "next/image";
 
 const FRAMES = [
@@ -14,11 +12,7 @@ const FRAMES = [
 
 export default function MetodeFotoPage() {
   const router = useRouter();
-  const { frameId, setPhotos } = usePhotobooth();
-  const fileInputRef = useRef<HTMLInputElement>(null);
-
-  const frameConfig = getFrameConfig(frameId || "1");
-  const totalPhotos = frameConfig.photoCount;
+  const { frameId } = usePhotobooth();
   
   const selectedFrameSrc = FRAMES.find((f) => f.id === frameId)?.src || FRAMES[0].src;
 
@@ -27,43 +21,7 @@ export default function MetodeFotoPage() {
   };
 
   const handleGalleryClick = () => {
-    fileInputRef.current?.click();
-  };
-
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const files = e.target.files;
-    if (files && files.length > 0) {
-      const promises: Promise<string>[] = [];
-      
-      for (let i = 0; i < files.length; i++) {
-        const file = files[i];
-        if (file.type.startsWith("image/")) {
-          const promise = new Promise<string>((resolve) => {
-            const reader = new FileReader();
-            reader.onload = (event) => {
-              if (event.target?.result) {
-                resolve(event.target.result as string);
-              }
-            };
-            reader.readAsDataURL(file);
-          });
-          promises.push(promise);
-        }
-      }
-      
-      Promise.all(promises).then(uploadedPhotos => {
-        if (uploadedPhotos.length > 0) {
-          let finalPhotos = [...uploadedPhotos];
-          while (finalPhotos.length < totalPhotos) {
-            finalPhotos.push(finalPhotos[finalPhotos.length - 1]);
-          }
-          finalPhotos = finalPhotos.slice(0, totalPhotos);
-          
-          setPhotos(finalPhotos);
-          router.push("/kenangan-perkahwinan/filter");
-        }
-      });
-    }
+    router.push("/kenangan-perkahwinan/galeri");
   };
 
   return (
@@ -191,15 +149,6 @@ export default function MetodeFotoPage() {
             </span>
           </button>
         </div>
-
-        <input 
-          type="file" 
-          accept="image/*" 
-          multiple
-          ref={fileInputRef} 
-          className="hidden" 
-          onChange={handleFileChange} 
-        />
       </div>
     </main>
   );

@@ -32,7 +32,7 @@ export const FRAME_CONFIGS: Record<string, FrameConfig> = {
     svgViewBoxWidth: 288,
     svgViewBoxHeight: 432,
     photoSlots: [
-      { x: 18, y: 18, w: 252, h: 315 } // Approximated from clip path inside frame
+      { x: 16, y: 16, w: 256, h: 319 } // Frame 1
     ]
   },
   '2': {
@@ -46,8 +46,8 @@ export const FRAME_CONFIGS: Record<string, FrameConfig> = {
     svgViewBoxWidth: 144,
     svgViewBoxHeight: 432,
     photoSlots: [
-      { x: 10.80, y: 10.80, w: 122.40, h: 154.91 },
-      { x: 10.80, y: 176.40, w: 122.40, h: 154.91 }
+      { x: 8.8, y: 8.8, w: 126.4, h: 158.91 },
+      { x: 8.8, y: 174.4, w: 126.4, h: 158.91 }
     ]
   },
   '4': {
@@ -61,10 +61,10 @@ export const FRAME_CONFIGS: Record<string, FrameConfig> = {
     svgViewBoxWidth: 288,
     svgViewBoxHeight: 432,
     photoSlots: [
-      { x: 14.40, y: 14.40, w: 122.40, h: 154.91 },
-      { x: 151.20, y: 14.40, w: 122.40, h: 154.91 },
-      { x: 14.40, y: 183.60, w: 122.40, h: 154.91 },
-      { x: 151.20, y: 183.60, w: 122.40, h: 154.91 }
+      { x: 12.4, y: 12.4, w: 126.4, h: 158.91 },
+      { x: 149.2, y: 12.4, w: 126.4, h: 158.91 },
+      { x: 12.4, y: 181.6, w: 126.4, h: 158.91 },
+      { x: 149.2, y: 181.6, w: 126.4, h: 158.91 }
     ]
   }
 };
