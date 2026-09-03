@@ -60,11 +60,11 @@ export default function PesanPage() {
       const supabase = createClient();
       
       // 1. Upload to Storage
-      const fileName = `${Date.now()}_${Math.random().toString(36).substring(7)}.webp`;
+      const fileName = `${Date.now()}_${Math.random().toString(36).substring(7)}.png`;
       const { data: uploadData, error: uploadError } = await supabase.storage
         .from("photobooth")
         .upload(fileName, mergedBlob, {
-          contentType: "image/webp",
+          contentType: "image/png",
           upsert: false
         });
         
